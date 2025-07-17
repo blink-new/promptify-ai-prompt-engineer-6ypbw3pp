@@ -1,13 +1,14 @@
-import { Bot, PanelLeft, PanelRight, User } from 'lucide-react';
+import { Bot, PanelLeft, PanelRight, User, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface HeaderProps {
   onHistoryToggle?: () => void;
   onConfigToggle?: () => void;
+  onSettingsClick?: () => void;
 }
 
-export function Header({ onHistoryToggle, onConfigToggle }: HeaderProps) {
+export function Header({ onHistoryToggle, onConfigToggle, onSettingsClick }: HeaderProps) {
   return (
     <header className="flex items-center justify-between p-2 border-b border-border">
       <div className="flex items-center gap-2">
@@ -21,6 +22,16 @@ export function Header({ onHistoryToggle, onConfigToggle }: HeaderProps) {
       </div>
       <div className="flex items-center gap-2">
         <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" size="icon" onClick={onSettingsClick}>
+                <Settings className="w-5 h-5" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Settings</p>
+            </TooltipContent>
+          </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon">
