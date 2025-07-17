@@ -1,14 +1,22 @@
-import './App.css'
+import './App.css';
+import { Header } from '@/components/layout/header';
+import { Sidebar } from '@/components/layout/sidebar';
+import { PromptWorkspace } from '@/components/features/prompt/workspace';
+import { ConfigPanel } from '@/components/layout/config-panel';
 
 function App() {
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
-      <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold text-primary">Welcome to Promptify v2.0</h1>
-        <p className="text-muted-foreground">The redesign is in progress. Stay tuned!</p>
+    <div className="min-h-screen bg-background font-sans text-foreground flex flex-col">
+      <Header />
+      <div className="flex flex-1 overflow-hidden">
+        <Sidebar />
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <PromptWorkspace />
+        </div>
+        <ConfigPanel />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
